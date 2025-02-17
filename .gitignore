@@ -1,0 +1,15 @@
+# IDEs
+.vscode/
+.idea/
+
+# Logs
+logs
+*.log
+
+# Node
+/frontend/node_modules/
+/frontend/.next/
+/frontend/out/
+
+# Backend
+/backend/bin/
