@@ -1,27 +1,44 @@
 {
-  "name": "frontend",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "15.1.7"
-  },
-  "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "eslint": "^9",
-    "eslint-config-next": "15.1.7",
-    "@eslint/eslintrc": "^3"
-  }
+	"name": "frontend",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "concurrently --names \"NEXT,CODEGEN\" -c \"auto\"  \"pnpm run next:dev\"  \"pnpm run watch:openapi\"",
+		"next:dev": "next dev --turbo",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"lint:fix": "next lint --fix .",
+		"generate:openapi": "openapi-ts",
+		"watch:openapi": "nodemon --watch ../backend/openapi.json --exec \"pnpm run generate:openapi\"",
+		"type-check": "tsc -p tsconfig.jsons --noEmit"
+	},
+	"dependencies": {
+		"@heroui/react": "^2.6.14",
+		"@hey-api/client-fetch": "^0.8.1",
+		"@hey-api/client-next": "^0.2.1",
+		"@hookform/resolvers": "^4.1.0",
+		"@iconify/react": "^5.2.0",
+		"@tanstack/react-query": "^5.66.3",
+		"concurrently": "^9.1.2",
+		"framer-motion": "^12.4.3",
+		"next": "15.1.7",
+		"nodemon": "^3.1.9",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0",
+		"react-hook-form": "^7.54.2",
+		"zod": "^3.24.2"
+	},
+	"devDependencies": {
+		"@eslint/eslintrc": "^3",
+		"@hey-api/openapi-ts": "^0.64.4",
+		"@types/node": "^20",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"eslint": "^9",
+		"eslint-config-next": "15.1.7",
+		"postcss": "^8",
+		"tailwindcss": "^3.4.1",
+		"typescript": "^5"
+	}
 }
